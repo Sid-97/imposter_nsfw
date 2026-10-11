@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#76122e" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="description" content="A pass-the-phone party game for finding the secret imposter." />
+    <title>The Imposter Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=2" />
+  </head>
+  <body>
+    <div class="doodles" aria-hidden="true"></div>
+
+    <main>
+      <section id="home-screen" class="screen home-screen active" aria-labelledby="game-title">
+        <div class="hero">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A game of secrets, instinct &amp; deception</div>
+          <h1 id="game-title" class="logo" aria-label="The Imposter Game">
+            <span class="logo-small">THE</span>
+            <span class="logo-word">
+              <span class="letter coral">I</span><span class="letter yellow">M</span><span class="letter green">P</span><span class="letter cyan">O</span><span class="letter pink">S</span><span class="letter orange">T</span><span class="letter violet">E</span><span class="letter white">R</span>
+            </span>
+            <span class="logo-game">GAME</span>
+          </h1>
+
+          <div class="silhouette-line" aria-hidden="true">
+            <svg viewBox="0 0 90 170"><circle cx="45" cy="24" r="16"/><path d="M30 46c8-7 22-7 30 0 5 14 4 29-1 41 12 18 16 42 17 72H14c1-30 5-54 17-72-5-12-6-27-1-41Z"/></svg>
+            <svg class="silhouette-featured" viewBox="0 0 90 170"><circle cx="45" cy="24" r="16"/><path d="M30 46c8-7 22-7 30 0 5 14 4 29-1 41 12 18 16 42 17 72H14c1-30 5-54 17-72-5-12-6-27-1-41Z"/></svg>
+            <svg viewBox="0 0 90 170"><circle cx="45" cy="24" r="16"/><path d="M30 46c8-7 22-7 30 0 5 14 4 29-1 41 12 18 16 42 17 72H14c1-30 5-54 17-72-5-12-6-27-1-41Z"/></svg>
+          </div>
+
+          <button id="start-button" class="button button-primary button-big" type="button">
+            <span>Start Game</span><span class="button-arrow">→</span>
+          </button>
+          <p class="player-note">3–10 players · One phone · Trust no one</p>
+        </div>
+
+        <section class="how-to-play" aria-labelledby="how-title">
+          <p class="section-kicker">The rules of deception</p>
+          <h2 id="how-title">How to play</h2>
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">1</span>
+              <div><h3>Get your role</h3><p>Pass the phone around. Everyone sees the same secret word—except one sneaky imposter.</p></div>
+            </article>
+            <article class="step">
+              <span class="step-number">2</span>
+              <div><h3>Give a clue</h3><p>Take turns saying just one word that describes the secret. Be helpful, but don’t give it away!</p></div>
+            </article>
+            <article class="step">
+              <span class="step-number">3</span>
+              <div><h3>Find the imposter</h3><p>Keep doing clue rounds or call a vote. Catch the imposter before they blend in.</p></div>
+            </article>
+          </div>
+          <div class="win-note"><span>★</span> Crewmates win by voting out the imposter. The imposter wins by fooling everyone.</div>
+        </section>
+      </section>
+
+      <section id="setup-screen" class="screen game-screen" aria-labelledby="setup-title" hidden>
+        <div class="game-card">
+          <button class="back-button" type="button" data-action="home" aria-label="Back to home">←</button>
+          <div class="card-icon people-icon" aria-hidden="true">♟</div>
+          <p class="section-kicker">Game setup</p>
+          <h2 id="setup-title">How many players?</h2>
+          <p class="screen-copy">Gather your crew. One of you will secretly become the imposter.</p>
+          <div class="player-picker" aria-label="Number of players">
+            <button id="decrease-players" type="button" aria-label="Remove a player">−</button>
+            <output id="player-count" aria-live="polite">4</output>
+            <button id="increase-players" type="button" aria-label="Add a player">+</button>
+          </div>
+          <p class="range-label">Choose between 3 and 10</p>
+          <button id="begin-round-button" class="button button-primary" type="button">Deal Secret Roles <span>→</span></button>
+        </div>
+      </section>
+
+      <section id="pass-screen" class="screen game-screen" aria-labelledby="pass-title" hidden>
+        <div class="game-card">
+          <div class="privacy-badge">PRIVATE — NO PEEKING!</div>
+          <div class="phone-illustration" aria-hidden="true"><span>↗</span></div>
+          <p id="player-label" class="section-kicker">Player 1 of 4</p>
+          <h2 id="pass-title">Pass the phone to<br /><span id="pass-player">Player 1</span></h2>
+          <p class="screen-copy">Make sure nobody else can see the screen.</p>
+          <button id="reveal-button" class="button button-primary" type="button">I’m Player 1 — Reveal <span>👀</span></button>
+        </div>
+      </section>
+
+      <section id="reveal-screen" class="screen game-screen" aria-labelledby="role-heading" hidden>
+        <div id="role-card" class="game-card role-card">
+          <p id="role-kicker" class="section-kicker">Your secret word is</p>
+          <div id="role-icon" class="role-icon" aria-hidden="true">★</div>
+          <h2 id="role-heading" class="secret-word">Bicycle</h2>
+          <p id="role-hint" class="screen-copy">Remember it, then hide it from the next player.</p>
+          <div class="shh-note">🤫 Keep it secret!</div>
+          <button id="confirm-button" class="button button-dark" type="button">Got It — Hide My Role</button>
+        </div>
+      </section>
+
+      <section id="ready-screen" class="screen game-screen" aria-labelledby="ready-title" hidden>
+        <div class="game-card ready-card">
+          <div class="burst" aria-hidden="true">★</div>
+          <p class="section-kicker">Everybody knows their role</p>
+          <h2 id="ready-title">Let the clues begin!</h2>
+          <p class="screen-copy">Put the phone away. Give one-word clues, listen closely, and trust absolutely no one.</p>
+          <div class="starter-note">
+            <span class="starter-label">First clue goes to</span>
+            <strong id="starting-player">Player 3</strong>
+          </div>
+          <p class="vote-reminder">After each clue round, either play again or vote for the imposter.</p>
+          <button id="new-round-button" class="button button-primary" type="button">Start Another Round <span>↻</span></button>
+          <button class="text-button" type="button" data-action="home">Back to home</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>For consenting adults who enjoy a little deception.</footer>
+    <script src="words.js?v=3"></script>
+    <script src="script.js?v=3"></script>
+  </body>
+</html>
